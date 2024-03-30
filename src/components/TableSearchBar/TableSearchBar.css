@@ -1,0 +1,8 @@
+.table-search-container {
+  display: flex;
+  align-items: center;
+}
+
+.table-search-container input {
+  width: 80%;
+}

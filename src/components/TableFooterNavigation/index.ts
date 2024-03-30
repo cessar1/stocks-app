@@ -1,0 +1,1 @@
+export { TableFooterNavigation } from './TableFooterNavigation'
