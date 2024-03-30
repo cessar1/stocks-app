@@ -27,6 +27,11 @@ Stocks App es una interfaz web que te permite visualizar la cotización de accio
 
 ## Uso
 
+Asegurate de crear un archivo `.env` en la raíz del proyecto, con los siguientes valores:
+VITE_API_KEY = 'tu api key' obtenla registrandote en htpps:https://www.twelvedata.com/
+
+Luego puedes:
+
 1. Inicia la aplicación en modo de desarrollo:
 
 ```bash

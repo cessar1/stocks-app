@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const BASE_URL = 'https://api.twelvedata.com';
-const API_KEY = '95480d2d4b0e4956b897e27e0cb3d0be';
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const stockApi = createApi({
   reducerPath: 'stocksApiTest',
