@@ -1,27 +1,27 @@
-import { DatePicker } from '../DatePicker';
+import { DatePicker } from '../DatePicker'
 import './DateRangePicker.css'
 interface DateRangePickerProps {
-  startDate: string;
-  endDate: string;
-  onStartDateChange: (date: string) => void;
-  onEndDateChange: (date: string) => void;
-  disabled?: boolean;
+  startDate: string
+  endDate: string
+  onStartDateChange: (date: string) => void
+  onEndDateChange: (date: string) => void
+  disabled?: boolean
 }
 
-export function DateRangePicker({
+export function DateRangePicker ({
   startDate,
   endDate,
   onStartDateChange,
   onEndDateChange,
-  disabled = false,
+  disabled = false
 }: DateRangePickerProps) {
   const handleStartDateChange = (date: string) => {
-    onStartDateChange(date);
-  };
+    onStartDateChange(date)
+  }
 
   const handleEndDateChange = (date: string) => {
-    onEndDateChange(date);
-  };
+    onEndDateChange(date)
+  }
 
   return (
     <div className='date-range-picker-container'>
@@ -42,6 +42,5 @@ export function DateRangePicker({
         onChange={handleEndDateChange}
       />
     </div>
-  );
+  )
 }
-

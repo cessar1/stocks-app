@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 export const useDateRange = (initialStartDate: string = '', initialEndDate: string = '') => {
-  const [startDate, setStartDate] = useState(initialStartDate);
-  const [endDate, setEndDate] = useState(initialEndDate);
+  const [startDate, setStartDate] = useState(initialStartDate)
+  const [endDate, setEndDate] = useState(initialEndDate)
 
   const handleStartDateChange = (date: string) => {
-    setStartDate(date);
+    setStartDate(date)
   }
 
   const handleEndDateChange = (date: string) => {
-    setEndDate(date);
+    setEndDate(date)
   }
 
-  return { startDate, endDate, handleStartDateChange, handleEndDateChange };
-};
+  return { startDate, endDate, handleStartDateChange, handleEndDateChange }
+}

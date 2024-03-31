@@ -1,34 +1,31 @@
-
-import { CandlestickData, ColorType, Time, createChart } from 'lightweight-charts';
-import { useEffect, useRef } from 'react';
+import { type CandlestickData, ColorType, type Time, createChart } from 'lightweight-charts'
+import { useEffect, useRef } from 'react'
 
 interface ChartComponentProps {
-  data: CandlestickData<Time>[]
+  data: Array<CandlestickData<Time>>
 }
 export const ChartComponent = ({ data = [] }: ChartComponentProps) => {
-
-  const chartContainerRef = useRef<HTMLDivElement>(null);
+  const chartContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(
     () => {
       const handleResize = () => {
-        chart.applyOptions({ width: chartContainerRef.current!.clientWidth });
-      };
+        chart.applyOptions({ width: chartContainerRef.current!.clientWidth })
+      }
       const chartOptions = {
         layout: {
           textColor: 'white',
           background: {
             type: ColorType.Solid,
             color: '#161f27'
-          },
+          }
         },
         width: chartContainerRef.current!.clientWidth,
-        height: 400,
+        height: 400
       }
 
       const chart = createChart(chartContainerRef.current!, chartOptions)
-      chart.timeScale().fitContent();
-
+      chart.timeScale().fitContent()
 
       const candlestickSeries = chart.addCandlestickSeries({
         upColor: '#26a69a',
@@ -36,23 +33,23 @@ export const ChartComponent = ({ data = [] }: ChartComponentProps) => {
         borderVisible: false,
         wickUpColor: '#26a69a',
         wickDownColor: '#ef5350'
-      });
+      })
 
-      candlestickSeries.setData(data);
-      window.addEventListener('resize', handleResize);
+      candlestickSeries.setData(data)
+      window.addEventListener('resize', handleResize)
 
       return () => {
-        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('resize', handleResize)
 
-        chart.remove();
-      };
+        chart.remove()
+      }
     },
     [data]
-  );
+  )
 
   return (
     <div
       ref={chartContainerRef}
     />
-  );
-};
+  )
+}
