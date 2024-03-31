@@ -1,14 +1,14 @@
 import './RadioInput.css'
 
 interface RadioInputProps {
-  id: string;
-  value: string;
-  checked: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  label: string;
+  id: string
+  value: string
+  checked: boolean
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  label: string
 }
 
-export function RadioInput({ id, value, checked, onChange, label }: RadioInputProps) {
+export function RadioInput ({ id, value, checked, onChange, label }: RadioInputProps) {
   return (
     <div className='radio-input-container'>
       <input
@@ -20,6 +20,5 @@ export function RadioInput({ id, value, checked, onChange, label }: RadioInputPr
       />
       <label htmlFor={id}>{label}</label>
     </div>
-  );
+  )
 }
-

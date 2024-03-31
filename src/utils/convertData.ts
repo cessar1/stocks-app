@@ -1,9 +1,9 @@
-import { StockData } from "../types";
+import { type StockData } from '../types'
 
-function convertData(data: StockData[]) {
+function convertData (data: StockData[]) {
   return data.map(stockData => {
-    const date = new Date(stockData.datetime);
-    const unixTime = Math.floor(date.getTime() / 1000);
+    const date = new Date(stockData.datetime)
+    const unixTime = Math.floor(date.getTime() / 1000)
 
     return {
       open: parseFloat(stockData.open),

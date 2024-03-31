@@ -1,34 +1,33 @@
-import { useState } from "react";
+import { useState } from 'react'
 import {
   usePagination,
   useSearch
-} from "../../hooks";
-import { Table } from "../Table";
-import { TableFooterNavigation } from "../TableFooterNavigation";
-import TableSearchBar from "../TableSearchBar/TableSearchBar";
+} from '../../hooks'
+import { Table } from '../Table'
+import { TableFooterNavigation } from '../TableFooterNavigation'
+import TableSearchBar from '../TableSearchBar/TableSearchBar'
 import '../../App.css'
-import { useFilteredStocks } from "../../hooks/useFilteredStocks";
+import { useFilteredStocks } from '../../hooks/useFilteredStocks'
 
-function Home() {
-  const [itemsPerPage, setItemsPerPage] = useState(30);
+function Home () {
+  const [itemsPerPage, setItemsPerPage] = useState(30)
   const { filteredStocks, isLoading, isError } = useFilteredStocks()
   const {
     searchCriteria,
     handleSearchInputChange,
-    handlecriteriaRadioChange,
+    handlecriteriaRadioChange
   } = useSearch()
   const {
     currentPageIndex,
     currentItems,
     handleNextPage,
     handlePrevPage,
-    pageCount,
-  } = usePagination({ stocks: filteredStocks, itemsPerPage, });
+    pageCount
+  } = usePagination({ stocks: filteredStocks, itemsPerPage })
 
   const handleItemsPerPageChange = (newItemsPerPage: number) => {
-    setItemsPerPage(newItemsPerPage);
-  };
-
+    setItemsPerPage(newItemsPerPage)
+  }
 
   return (
     <div className="App">
@@ -49,7 +48,7 @@ function Home() {
         onItemsPerPageChange={handleItemsPerPageChange}
       />
     </div>
-  );
+  )
 }
 
 export default Home

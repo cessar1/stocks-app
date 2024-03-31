@@ -6,7 +6,7 @@ interface IntervalSelectorProps {
   value: string
 }
 
-export function IntervalSelector({ onChange, value }: IntervalSelectorProps) {
+export function IntervalSelector ({ onChange, value }: IntervalSelectorProps) {
   return (
     <div className='interval-selector-container'>
       <label>Intervalo</label>
@@ -20,4 +20,3 @@ export function IntervalSelector({ onChange, value }: IntervalSelectorProps) {
     </div>
   )
 }
-

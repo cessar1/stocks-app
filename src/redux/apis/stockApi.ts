@@ -1,7 +1,7 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const BASE_URL = 'https://api.twelvedata.com';
-const API_KEY = import.meta.env.VITE_API_KEY;
+const BASE_URL = 'https://api.twelvedata.com'
+const API_KEY = import.meta.env.VITE_API_KEY
 
 const stockApi = createApi({
   reducerPath: 'stocksApiTest',
@@ -41,10 +41,10 @@ const stockApi = createApi({
           apikey: API_KEY
         }
       })
-    }),
-  }),
-});
+    })
+  })
+})
 
-export const { useFetchRealTimeDataQuery, useFetchHistoricalDataQuery, useGetStocksQuery, useFetchStockDetailsQuery } = stockApi;
+export const { useFetchRealTimeDataQuery, useFetchHistoricalDataQuery, useGetStocksQuery, useFetchStockDetailsQuery } = stockApi
 
 export default stockApi
