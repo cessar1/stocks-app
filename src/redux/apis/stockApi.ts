@@ -4,7 +4,7 @@ const BASE_URL = 'https://api.twelvedata.com'
 const API_KEY = import.meta.env.VITE_API_KEY
 
 const stockApi = createApi({
-  reducerPath: 'stocksApiTest',
+  reducerPath: 'stocks',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     fetchRealTimeData: builder.query({

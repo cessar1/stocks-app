@@ -1,17 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
-import stockApi from './apis/stockApi';
-import searchSlice from './searchSlice';
+import stockApi from './apis/stockApi'
+import searchSlice from './searchSlice'
 
 const rootReducer = {
   search: searchSlice,
-  [stockApi.reducerPath]: stockApi.reducer,
+  [stockApi.reducerPath]: stockApi.reducer
 }
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(stockApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(stockApi.middleware)
 })
-
-
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof store.getState>
 export default store

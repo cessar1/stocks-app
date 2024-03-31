@@ -1,14 +1,14 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from './store';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { type RootState } from './store'
 
 interface SearchState {
-  searchText: string;
-  searchCriteria: 'name' | 'symbol';
+  searchText: string
+  searchCriteria: 'name' | 'symbol'
 }
 const initialState: SearchState = {
   searchText: '',
-  searchCriteria: 'name',
-};
+  searchCriteria: 'name'
+}
 
 const searchSlice = createSlice({
   name: 'search',
@@ -18,14 +18,14 @@ const searchSlice = createSlice({
       state.searchText = action.payload
     },
     setSearchCriteria: (state, action: PayloadAction<'name' | 'symbol'>) => {
-      state.searchCriteria = action.payload;
-    },
-  },
-});
+      state.searchCriteria = action.payload
+    }
+  }
+})
 
-export default searchSlice.reducer;
+export default searchSlice.reducer
 
-export const selectSearchText = (state: RootState) => state.search.searchText;
-export const selectSearchCriteria = (state: RootState) => state.search.searchCriteria;
+export const selectSearchText = (state: RootState) => state.search.searchText
+export const selectSearchCriteria = (state: RootState) => state.search.searchCriteria
 
-export const { setSearchText, setSearchCriteria } = searchSlice.actions;
+export const { setSearchText, setSearchCriteria } = searchSlice.actions
