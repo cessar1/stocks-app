@@ -1,20 +1,18 @@
-import { Link } from "react-router-dom";
-import { type TransformedStock } from "../../types";
-import './Table.css';
-
-
+import { Link } from 'react-router-dom'
+import { type Stock } from '../../types'
+import './Table.css'
 
 interface TableProps {
-  currentItems: TransformedStock[];
-  isLoading: boolean;
-  error: boolean;
+  currentItems: Stock[]
+  isLoading: boolean
+  error: boolean
 }
-export function Table({ currentItems, isLoading, error }: TableProps) {
+export function Table ({ currentItems, isLoading, error }: TableProps) {
   if (isLoading) {
-    return <p>Cargando...</p>;
+    return <p>Cargando...</p>
   }
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p>Error: {error}</p>
   }
   return (
     <div className="table-container">

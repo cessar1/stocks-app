@@ -1,16 +1,16 @@
-import { TransformedStock } from "../../types";
+import { type Stock } from '../../types'
 import './TableFooterNavigation.css'
 
 interface TableFooterNavigationProps {
-  currentPage: number;
-  currentItems: TransformedStock[];
-  itemsPerPage: number;
-  pageCount: number;
-  onNextPage: () => void;
-  onPreviousPage: () => void;
-  onItemsPerPageChange: (itemsPerPage: number) => void;
+  currentPage: number
+  currentItems: Stock[]
+  itemsPerPage: number
+  pageCount: number
+  onNextPage: () => void
+  onPreviousPage: () => void
+  onItemsPerPageChange: (itemsPerPage: number) => void
 }
-export function TableFooterNavigation({
+export function TableFooterNavigation ({
   onNextPage,
   onPreviousPage,
   currentPage,
@@ -19,11 +19,10 @@ export function TableFooterNavigation({
   pageCount,
   onItemsPerPageChange
 }: TableFooterNavigationProps) {
-
   const handleItemsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newItemsPerPage = parseInt(event.target.value);
-    onItemsPerPageChange(newItemsPerPage);
-  };
+    const newItemsPerPage = parseInt(event.target.value)
+    onItemsPerPageChange(newItemsPerPage)
+  }
 
   return (
     <div className="footer-container">

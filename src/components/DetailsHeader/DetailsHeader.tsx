@@ -1,15 +1,15 @@
-import { TransformedStock } from "../../types";
+import { type Stock } from '../../types'
 
 interface StockDetailsProps {
-  stockDetail: TransformedStock;
+  stockDetail: Stock
 }
 
-export function DetailsHeader({ stockDetail }: StockDetailsProps) {
+export function DetailsHeader ({ stockDetail }: StockDetailsProps) {
   return (
     <header>
-      <h2>
+      {stockDetail !== undefined && <h2>
         {`${stockDetail?.symbol} - ${stockDetail?.name} - ${stockDetail?.currency} `}
-      </h2>
+      </h2>}
     </header>
   )
 }

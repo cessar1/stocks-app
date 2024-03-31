@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import { useGetStocksQuery } from '../redux/apis/stockApi'
-import { Stock } from '../types';
-import { selectSearchCriteria, selectSearchText } from '../redux/searchSlice';
+import { type Stock } from '../types'
+import { selectSearchCriteria, selectSearchText } from '../redux/searchSlice'
 
 /**
  * Custom hook para filtrar los stocks por criterio de búsqueda y texto.
@@ -12,29 +12,25 @@ import { selectSearchCriteria, selectSearchText } from '../redux/searchSlice';
 
 export const useFilteredStocks = () => {
   // Obtenemos los stocks utilizando RTK Query
-  const { data: stocks = [], isLoading, isError } = useGetStocksQuery(undefined);
+  const { data, isLoading, isError } = useGetStocksQuery(undefined)
 
-  const searchText = useSelector(selectSearchText)
-  const searchCriteria = useSelector(selectSearchCriteria)
+  const searchText: string = useSelector(selectSearchText)
+  const searchCriteria: string = useSelector(selectSearchCriteria)
+  const stocks: Stock[] = data?.data ?? []
 
-  let filteredStocks: Stock[] = []
+  let filteredStocks: Stock[]
   if (searchText.trim() !== '') {
-
-    filteredStocks = stocks.data.filter((stock: Stock) => {
-
+    filteredStocks = stocks.filter((stock) => {
       if (searchCriteria === 'name') {
         return stock.name.toLowerCase().includes(searchText.toLowerCase())
-
       } else if (searchCriteria === 'symbol') {
         return stock.symbol.toLowerCase().includes(searchText.toLowerCase())
       }
       return false
-    });
-
+    })
   } else {
-    filteredStocks = stocks.data;
+    filteredStocks = stocks
   }
 
-
-  return { filteredStocks, isLoading, isError };
-};
+  return { filteredStocks, isLoading, isError }
+}

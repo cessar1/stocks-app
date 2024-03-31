@@ -1,26 +1,24 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { ChartComponent } from '../Chart'
-import { RadioInput } from "../RadioInput";
-import { IntervalSelector } from "../IntervalSelector";
-import { DateRangePicker } from "../DateRangePicker";
-import { DetailsHeader } from "../DetailsHeader";
+import { RadioInput } from '../RadioInput'
+import { IntervalSelector } from '../IntervalSelector'
+import { DateRangePicker } from '../DateRangePicker'
+import { DetailsHeader } from '../DetailsHeader'
 import { useFetchStockDetailsQuery } from '../../redux/apis/stockApi'
 import './Details.css'
-import { intervalToMillisecondsMap } from "../../constants";
+import { intervalToMillisecondsMap } from '../../constants'
+import { type CandlestickData, type Time } from 'lightweight-charts'
 
 import { useStockData, useDateRange } from '../../hooks'
 
-
-function Details() {
-
-  const { symbol } = useParams();
-  const [selectedMode, setSelectedMode] = useState('realTime');
-  const [interval, setInterval] = useState('1min');
-  const [pollingInterval, setPollingInterval] = useState(60_000);
+function Details () {
+  const { symbol } = useParams()
+  const [selectedMode, setSelectedMode] = useState('realTime')
+  const [interval, setInterval] = useState('1min')
+  const [pollingInterval, setPollingInterval] = useState(60_000)
   const { startDate, endDate, handleStartDateChange, handleEndDateChange } = useDateRange()
-  const { stockData } = useStockData(symbol, interval, startDate, endDate, selectedMode, pollingInterval)
-
+  const { stockData } = useStockData(symbol ?? '', interval, startDate, endDate, selectedMode, pollingInterval)
 
   const { data: stockDetails } = useFetchStockDetailsQuery({ symbol })
 
@@ -29,10 +27,10 @@ function Details() {
   }
 
   const onIntervalChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newInterval = event.target.value;
-    setInterval(newInterval);
-    setPollingInterval(intervalToMillisecondsMap[newInterval]);
-  };
+    const newInterval = event.target.value
+    setInterval(newInterval)
+    setPollingInterval(intervalToMillisecondsMap[newInterval])
+  }
 
   return (
     <div className="details-container">
@@ -61,7 +59,9 @@ function Details() {
         />
       </div>
       <IntervalSelector onChange={onIntervalChange} value={interval} />
-      {!stockData.length ? <p>No hay datos disponibles para visualizar el gráfico.</p> : <ChartComponent data={stockData}></ChartComponent>}
+      {(stockData.length === 0)
+        ? <p>No hay datos disponibles para visualizar el gráfico.</p>
+        : <ChartComponent data={stockData as Array<CandlestickData<Time>>}></ChartComponent>}
     </div >
   )
 }
